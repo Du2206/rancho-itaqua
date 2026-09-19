@@ -1,5 +1,7 @@
 # Churrascaria Rancho Itaquá
 
+No ar em <https://du2206.github.io/rancho-itaqua/>
+
 Página de links do restaurante. Site estático, sem build: é só abrir o `index.html`.
 
 ## Estrutura
@@ -23,4 +25,6 @@ Tudo fica no `index.html`:
 
 ## Publicar
 
-Serve em qualquer hospedagem estática. No GitHub Pages: suba o repositório, ative o Pages na branch `main` (pasta raiz) e, se for usar domínio próprio, crie um arquivo `CNAME` com o domínio dentro.
+Já está no GitHub Pages, servindo a branch `main` a partir da raiz. Todo `git push` na `main` republica o site sozinho, em cerca de um minuto.
+
+Para usar domínio próprio, crie um arquivo `CNAME` na raiz com o domínio dentro e aponte o DNS para o GitHub.
