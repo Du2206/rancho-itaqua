@@ -1,32 +1,25 @@
 # Churrascaria Rancho Itaquá
 
-Página de links (estilo Linktree) do restaurante. Site estático, sem build: é só abrir o `index.html`.
+Página de links do restaurante. Site estático, sem build: é só abrir o `index.html`.
 
-## Arquivos
+## Estrutura
 
-| Arquivo | O que é |
+| Caminho | O que é |
 | --- | --- |
-| `index.html` | A página e a lista de links |
-| `styles.css` | Visual (cores, botões, layout) |
-| `script.js` | Horário de funcionamento, botão de compartilhar e ano do rodapé |
-| `logo.png` | Logo branco (usado na página) |
-| `logo-black.png` | Logo preto (reserva, para fundo claro) |
+| `index.html` | A página inteira (layout, textos e links) |
+| `assets/` | Logo, ícones dos apps de delivery e a fonte Sora |
+| `vendor/` | Runtime da página e o React, servidos daqui mesmo, sem CDN |
 | `favicon.png` / `apple-touch-icon.png` | Ícone do site |
 
-## O que precisa ser preenchido
+A página veio de um artifact exportado. O bundle de 724 KB foi desempacotado: as imagens, fontes e scripts que estavam embutidos em base64 viraram arquivos de verdade, então dá pra trocar uma imagem ou um link sem mexer no resto.
 
-Procure por `TROCAR` no `index.html` e no `script.js`. Cada link tem um comentário dizendo o que colocar:
+## Onde editar
 
-- WhatsApp de pedidos e de eventos (formato `https://wa.me/55DDDNUMERO`)
-- Link do cardápio
-- Link do iFood
-- Instagram e Facebook
-- Google Maps
-- Telefone fixo
-- Endereço no rodapé
-- Horários em `HORARIOS`, no começo do `script.js`
+Tudo fica no `index.html`:
 
-Enquanto um link não estiver configurado, o botão mostra a etiqueta laranja **ajustar link**. Para tirar a etiqueta, remova `is-pending` da classe do botão.
+- **Links dos botões**: nos `href` de cada `<a>` (cardápio digital, WhatsApp, iFood, Keeta, 99Food e eventos)
+- **Endereço, telefone, @ do Instagram e o texto "Quem somos"**: no `data-props` do script no fim do arquivo
+- **Horário de funcionamento**: no método `aberto()`, também no fim do arquivo. Os números são minutos desde a meia-noite (660 = 11h, 930 = 15h30). O aviso de aberto/fechado no topo se atualiza sozinho a cada minuto
 
 ## Publicar
 

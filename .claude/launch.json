@@ -4,8 +4,8 @@
     {
       "name": "rancho-itaqua",
       "runtimeExecutable": "python3",
-      "runtimeArgs": ["-m", "http.server", "4321", "--directory", "/Users/dudu/Documents/restaurante-site"],
-      "port": 4321
+      "runtimeArgs": ["/private/tmp/claude-501/-Users-dudu-Documents-restaurante-site/c08a19e8-0c16-4edf-b1fb-7b185b7e8f6c/scratchpad/serve.py"],
+      "port": 4173
     }
   ]
 }

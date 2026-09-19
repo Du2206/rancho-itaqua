@@ -1,141 +1,297 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
-<head>
+<html lang="pt-BR"><head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Churrascaria Rancho Itaquá</title>
-<meta name="description" content="Churrasco na brasa, buffet e eventos. Peça pelo WhatsApp, veja o cardápio e saiba como chegar.">
-<meta name="theme-color" content="#14100e">
+<meta name="description" content="Churrascaria por kilo e self service em Itaquaquecetuba. Peça pelo cardápio digital, WhatsApp, iFood, Keeta ou 99Food.">
+<meta name="theme-color" content="#0a0a0a">
 <link rel="icon" href="favicon.png" type="image/png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Churrascaria Rancho Itaquá">
-<meta property="og:description" content="Churrasco na brasa, buffet e eventos. Todos os nossos links em um lugar só.">
+<meta property="og:description" content="Carnes na brasa, buffet variado e comida caseira. Todos os nossos links em um lugar só.">
 <meta property="og:image" content="favicon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Oswald:wght@500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css">
+<!-- React servido daqui do repositório, no lugar do CDN -->
+<script>
+  window.__resources = {
+    "https://unpkg.com/react@18.3.1/umd/react.production.min.js": "vendor/react.production.min.js",
+    "https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js": "vendor/react-dom.production.min.js"
+  };
+</script>
+<script src="vendor/dc-runtime.js"></script>
 </head>
 <body>
+<x-dc>
+<helmet>
 
-<!-- Icones usados nos botoes -->
-<svg class="sprite" aria-hidden="true" focusable="false">
-  <symbol id="i-whatsapp" viewBox="0 0 24 24"><path fill="currentColor" d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.87 9.87 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2Zm0 18.15h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.18 8.18 0 0 1-1.26-4.38c0-4.54 3.7-8.23 8.25-8.23 2.2 0 4.27.86 5.83 2.42a8.18 8.18 0 0 1 2.41 5.82c0 4.54-3.7 8.23-8.24 8.23Zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.25-.64.81-.79.98-.14.16-.29.19-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.38-1.72-.15-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.13-.15.17-.25.25-.41.08-.17.04-.31-.02-.44-.06-.12-.56-1.35-.77-1.85-.2-.48-.41-.42-.56-.43h-.48c-.16 0-.43.06-.65.31-.23.25-.85.83-.85 2.03s.87 2.35.99 2.51c.12.16 1.72 2.62 4.16 3.68.58.25 1.03.4 1.39.51.58.19 1.12.16 1.54.1.47-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.06-.11-.23-.17-.48-.29Z"/></symbol>
-  <symbol id="i-menu" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" d="M6 3h12a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1Zm2.5 5h7M8.5 12h7M8.5 16h4"/></symbol>
-  <symbol id="i-bag" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" d="M5 8h14l-1 12H6L5 8Zm3.5 0V6.5a3.5 3.5 0 0 1 7 0V8"/></symbol>
-  <symbol id="i-instagram" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" d="M7 3h10a4 4 0 0 1 4 4v10a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V7a4 4 0 0 1 4-4Zm5 5.5a3.5 3.5 0 1 1 0 7 3.5 3.5 0 0 1 0-7ZM17.3 6.7h.01"/></symbol>
-  <symbol id="i-pin" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11Zm0-8.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z"/></symbol>
-  <symbol id="i-party" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" d="m3 21 4.5-11.5L15.5 17 3 21Zm7-12.5A3.5 3.5 0 0 1 13.5 5M15 3.5v.01M20.5 8.5v.01M18 13l3-1"/></symbol>
-  <symbol id="i-phone" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" d="M6.5 3h3l1.5 4-2 1.5a12 12 0 0 0 5.5 5.5L16 12l4 1.5v3a2.5 2.5 0 0 1-2.7 2.5C10.5 18.5 5.5 13.5 4 6.7A2.5 2.5 0 0 1 6.5 3Z"/></symbol>
-  <symbol id="i-chevron" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="m9 5 7 7-7 7"/></symbol>
-  <symbol id="i-share" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" d="M12 3v12m0-12L8 7m4-4 4 4M5 13v5.5A1.5 1.5 0 0 0 6.5 20h11a1.5 1.5 0 0 0 1.5-1.5V13"/></symbol>
-  <symbol id="i-facebook" viewBox="0 0 24 24"><path fill="currentColor" d="M13.5 22v-8h2.7l.4-3.1h-3.1V8.9c0-.9.25-1.5 1.55-1.5h1.65V4.6c-.29-.04-1.27-.12-2.41-.12-2.39 0-4.03 1.46-4.03 4.14v2.31H7.5V14h2.76v8h3.24Z"/></symbol>
-</svg>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<style>/* latin-ext */
+@font-face {
+  font-family: 'Sora';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("assets/sora-latin-ext.woff2") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Sora';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("assets/sora-latin.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Sora';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("assets/sora-latin-ext.woff2") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Sora';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("assets/sora-latin.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Sora';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("assets/sora-latin-ext.woff2") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Sora';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("assets/sora-latin.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Sora';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("assets/sora-latin-ext.woff2") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Sora';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("assets/sora-latin.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Sora';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url("assets/sora-latin-ext.woff2") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Sora';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url("assets/sora-latin.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+</style>
+<script src="vendor/image-slot.js"></script>
+<style>
+  body { margin: 0; background: #0a0a0a; }
+  * { box-sizing: border-box; }
+  a { color: #e9c46a; text-decoration: none; }
+  @keyframes brilho {
+    0%   { transform: translateX(-140%) skewX(-18deg); }
+    62%  { transform: translateX(240%) skewX(-18deg); }
+    100% { transform: translateX(240%) skewX(-18deg); }
+  }
+  a:hover { color: #f4f1ea; }
+</style>
+</helmet>
+<div style="min-height:100vh; background:#0a0a0a; background-image:repeating-linear-gradient(135deg, rgba(233,196,106,0.045) 0 1px, transparent 1px 16px); font-family:'Sora',sans-serif; color:#f4f1ea; display:flex; justify-content:center; padding:0 20px 56px; position:relative;">
+  <div style="width:100%; max-width:440px; display:flex; flex-direction:column; align-items:center;">
 
-<div class="ember" aria-hidden="true"></div>
+    <div style="width:100%; display:flex; flex-direction:column; align-items:center; padding:52px 0 0;">
+      <img src="assets/logo-rancho.png" alt="Churrascaria Rancho Itaquá" style="width:230px; max-width:72%; height:auto; object-fit:contain;">
+      <div style="width:150px; display:flex; flex-direction:column; gap:4px; margin-top:10px;">
+        <div style="height:3px; background:#f4f1ea;"></div>
+        <div style="height:1px; background:rgba(244,241,234,0.5);"></div>
+      </div>
+      <div style="margin-top:18px; font-size:14px; font-weight:600; letter-spacing:0.14em; color:#e9c46a;">{{ handle }}</div>
+      <div style="margin-top:16px; display:flex; align-items:center; gap:9px; border:1px solid {{ statusBorda }}; padding:8px 16px;">
+        <span style="width:8px; height:8px; border-radius:50%; background:{{ statusCor }};"></span>
+        <span style="font-size:11px; font-weight:700; letter-spacing:0.18em; color:{{ statusCor }};">{{ statusTexto }}</span>
+      </div>
+      <div style="margin-top:14px; display:flex; gap:8px; flex-wrap:wrap; justify-content:center;">
+        <div style="border:1px solid rgba(244,241,234,0.4); padding:7px 14px; font-size:11px; font-weight:600; letter-spacing:0.18em; color:rgba(244,241,234,0.9);">KILO</div>
+        <div style="border:1px solid rgba(244,241,234,0.4); padding:7px 14px; font-size:11px; font-weight:600; letter-spacing:0.18em; color:rgba(244,241,234,0.9);">SELF SERVICE</div>
+      </div>
+    </div>
 
-<main class="card">
+    <div style="width:100%; margin-top:30px; display:flex; flex-direction:column; align-items:center; gap:12px; border-top:1px solid rgba(244,241,234,0.18); border-bottom:1px solid rgba(244,241,234,0.18); padding:24px 4px;">
+      <div style="display:flex; align-items:center; gap:10px;">
+        <span style="width:6px; height:6px; background:#e9c46a; transform:rotate(45deg);"></span>
+        <span style="font-size:11px; font-weight:600; letter-spacing:0.22em; color:#e9c46a; padding-left:0.22em;">QUEM SOMOS</span>
+        <span style="width:6px; height:6px; background:#e9c46a; transform:rotate(45deg);"></span>
+      </div>
+      <div style="font-size:14px; font-weight:400; line-height:1.7; color:rgba(244,241,234,0.9); text-align:center; text-wrap:pretty;">{{ sobre }}</div>
+    </div>
 
-  <button class="share" type="button" id="share" aria-label="Compartilhar esta página">
-    <svg aria-hidden="true"><use href="#i-share"></use></svg>
-  </button>
+    <div style="width:100%; display:flex; flex-direction:column; gap:12px; margin-top:34px;">
 
-  <header class="head">
-    <img class="logo" src="logo.png" alt="Churrascaria Rancho Itaquá" width="940" height="425">
-    <p class="tagline">Churrasco na brasa, buffet e eventos</p>
-    <p class="status" id="status" hidden></p>
-  </header>
+      <a href="https://pedido.zesto.menu/pt-BR/store/churrascaria-rancho/prrncppfzvrcthyqv" target="_blank" rel="noopener" style="position:relative; overflow:hidden; display:flex; align-items:center; justify-content:space-between; gap:14px; background:#e9c46a; color:#0a0a0a; padding:20px 22px; border:2px solid #e9c46a;" style-hover="background:#f4f1ea; border-color:#f4f1ea; color:#0a0a0a;" style-after="content:''; position:absolute; top:0; bottom:0; left:0; width:38%; background:linear-gradient(100deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.72) 50%, rgba(255,255,255,0) 100%); animation:brilho 3.6s ease-in-out infinite; pointer-events:none;">
+        <span style="display:flex; flex-direction:column; gap:5px;">
+          <span style="font-size:16px; font-weight:800; letter-spacing:0.1em;">PEÇA NO NOSSO LINK</span>
+          <span style="font-size:11px; font-weight:700; letter-spacing:0.18em; color:rgba(10,10,10,0.72);">MAIS BARATO — SEM TAXA DE APP</span>
+        </span>
+        <span style="font-size:18px; font-weight:700;">→</span>
+      </a>
 
-  <nav class="links" aria-label="Links principais">
+      <a href="https://wa.me/5511918496640" target="_blank" rel="noopener" style="display:flex; align-items:center; justify-content:space-between; gap:16px; background:transparent; color:#f4f1ea; padding:14px 18px; border:2px solid rgba(244,241,234,0.5);" style-hover="border-color:#e9c46a; color:#e9c46a;">
+        <img src="assets/icone-whatsapp.png" alt="WhatsApp" style="width:52px; height:40px; flex:0 0 52px; object-fit:contain; filter:invert(1); opacity:0.92;">
+        <span style="font-size:16px; font-weight:700; letter-spacing:0.1em; flex:1;">WHATSAPP</span>
+        <span style="font-size:18px; font-weight:700;">→</span>
+      </a>
 
-    <!-- TROCAR: numero do WhatsApp no formato 55DDDNUMERO -->
-    <a class="link link--primary is-pending" href="https://wa.me/5511000000000?text=Ol%C3%A1!%20Quero%20fazer%20um%20pedido." target="_blank" rel="noopener">
-      <svg class="link__icon" aria-hidden="true"><use href="#i-whatsapp"></use></svg>
-      <span class="link__text">
-        <strong>Pedir pelo WhatsApp</strong>
-        <small>Pedidos, reservas e orçamentos</small>
-      </span>
-      <svg class="link__go" aria-hidden="true"><use href="#i-chevron"></use></svg>
-    </a>
+      <div style="display:flex; align-items:center; gap:14px; margin:14px 0 2px;">
+        <div style="flex:1; height:1px; background:rgba(244,241,234,0.22);"></div>
+        <div style="font-size:11px; font-weight:600; letter-spacing:0.22em; color:rgba(244,241,234,0.65); padding-left:0.22em;">DELIVERY</div>
+        <div style="flex:1; height:1px; background:rgba(244,241,234,0.22);"></div>
+      </div>
 
-    <!-- TROCAR: link do cardapio (PDF, imagem ou pagina) -->
-    <a class="link is-pending" href="#" target="_blank" rel="noopener">
-      <svg class="link__icon" aria-hidden="true"><use href="#i-menu"></use></svg>
-      <span class="link__text">
-        <strong>Cardápio</strong>
-        <small>Veja os pratos e os preços</small>
-      </span>
-      <svg class="link__go" aria-hidden="true"><use href="#i-chevron"></use></svg>
-    </a>
+      <a href="https://www.ifood.com.br/delivery/itaquaquecetuba-sp/churrascaria-rancho-itaqua-jardim-mossapyra/bc06bc9f-a568-4bc1-bf47-3cae230cf9fc?utm_medium=share" target="_blank" rel="noopener" style="display:flex; align-items:center; justify-content:space-between; gap:16px; background:transparent; color:#f4f1ea; padding:14px 18px; border:2px solid rgba(244,241,234,0.5);" style-hover="border-color:#e9c46a; color:#e9c46a;">
+        <img src="assets/icone-ifood.png" alt="iFood" style="width:52px; height:34px; flex:0 0 52px; object-fit:contain; opacity:0.95;">
+        <span style="font-size:16px; font-weight:700; letter-spacing:0.1em; flex:1;">PEÇA NO IFOOD</span>
+        <span style="font-size:18px; font-weight:700;">→</span>
+      </a>
 
-    <!-- TROCAR: link da loja no iFood -->
-    <a class="link is-pending" href="#" target="_blank" rel="noopener">
-      <svg class="link__icon" aria-hidden="true"><use href="#i-bag"></use></svg>
-      <span class="link__text">
-        <strong>Peça no iFood</strong>
-        <small>Delivery na sua casa</small>
-      </span>
-      <svg class="link__go" aria-hidden="true"><use href="#i-chevron"></use></svg>
-    </a>
+      <a href="https://url-eu.mykeeta.com/6LNQgzuz" target="_blank" rel="noopener" style="display:flex; align-items:center; justify-content:space-between; gap:16px; background:transparent; color:#f4f1ea; padding:14px 18px; border:2px solid rgba(244,241,234,0.5);" style-hover="border-color:#e9c46a; color:#e9c46a;">
+        <img src="assets/icone-keeta.png" alt="Keeta" style="width:52px; height:34px; flex:0 0 52px; object-fit:contain; filter:invert(1); opacity:0.95;">
+        <span style="font-size:16px; font-weight:700; letter-spacing:0.1em; flex:1;">PEÇA NA KEETA</span>
+        <span style="font-size:18px; font-weight:700;">→</span>
+      </a>
 
-    <!-- TROCAR: perfil do Instagram -->
-    <a class="link is-pending" href="#" target="_blank" rel="noopener">
-      <svg class="link__icon" aria-hidden="true"><use href="#i-instagram"></use></svg>
-      <span class="link__text">
-        <strong>Instagram</strong>
-        <small>Fotos, novidades e promoções</small>
-      </span>
-      <svg class="link__go" aria-hidden="true"><use href="#i-chevron"></use></svg>
-    </a>
+      <a href="https://oia.99app.com/dlp9/cfw1pS?share_media=WHATSAPP" target="_blank" rel="noopener" style="display:flex; align-items:center; justify-content:space-between; gap:16px; background:transparent; color:#f4f1ea; padding:14px 18px; border:2px solid rgba(244,241,234,0.5);" style-hover="border-color:#e9c46a; color:#e9c46a;">
+        <img src="assets/icone-99food.png" alt="99Food" style="width:52px; height:40px; flex:0 0 52px; object-fit:contain; filter:invert(1); opacity:0.95;">
+        <span style="font-size:16px; font-weight:700; letter-spacing:0.1em; flex:1;">PEÇA NO 99FOOD</span>
+        <span style="font-size:18px; font-weight:700;">→</span>
+      </a>
 
-    <!-- TROCAR: link do Google Maps -->
-    <a class="link is-pending" href="#" target="_blank" rel="noopener">
-      <svg class="link__icon" aria-hidden="true"><use href="#i-pin"></use></svg>
-      <span class="link__text">
-        <strong>Como chegar</strong>
-        <small>Abrir no Google Maps</small>
-      </span>
-      <svg class="link__go" aria-hidden="true"><use href="#i-chevron"></use></svg>
-    </a>
+      <div style="display:flex; align-items:center; gap:14px; margin:14px 0 2px;">
+        <div style="flex:1; height:1px; background:rgba(244,241,234,0.22);"></div>
+        <div style="font-size:11px; font-weight:600; letter-spacing:0.22em; color:rgba(244,241,234,0.65); padding-left:0.22em;">EVENTOS</div>
+        <div style="flex:1; height:1px; background:rgba(244,241,234,0.22);"></div>
+      </div>
 
-    <!-- TROCAR: numero do WhatsApp de eventos -->
-    <a class="link is-pending" href="https://wa.me/5511000000000?text=Ol%C3%A1!%20Quero%20um%20or%C3%A7amento%20para%20evento." target="_blank" rel="noopener">
-      <svg class="link__icon" aria-hidden="true"><use href="#i-party"></use></svg>
-      <span class="link__text">
-        <strong>Festas e eventos</strong>
-        <small>Aniversários, confraternizações e empresas</small>
-      </span>
-      <svg class="link__go" aria-hidden="true"><use href="#i-chevron"></use></svg>
-    </a>
+      <a href="https://wa.me/5511918496640?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20um%20evento%20de%20confraterniza%C3%A7%C3%A3o%20na%20Churrascaria%20Rancho%20Itaqu%C3%A1.%20Podem%20me%20passar%20valores%20e%20disponibilidade%3F" target="_blank" rel="noopener" style="display:flex; align-items:center; justify-content:space-between; gap:16px; background:transparent; color:#f4f1ea; padding:18px 18px; border:2px solid rgba(233,196,106,0.55);" style-hover="border-color:#e9c46a; color:#e9c46a;">
+        <span style="display:flex; flex-direction:column; gap:5px;">
+          <span style="font-size:16px; font-weight:700; letter-spacing:0.1em;">ORÇAMENTO PARA EVENTOS</span>
+          <span style="font-size:11px; font-weight:600; letter-spacing:0.16em; color:rgba(244,241,234,0.6);">FESTAS, CONFRATERNIZAÇÕES E ENCOMENDAS</span>
+        </span>
+        <span style="font-size:18px; font-weight:700;">→</span>
+      </a>
 
-    <!-- TROCAR: telefone fixo -->
-    <a class="link is-pending" href="tel:+551100000000">
-      <svg class="link__icon" aria-hidden="true"><use href="#i-phone"></use></svg>
-      <span class="link__text">
-        <strong>Ligar para o restaurante</strong>
-        <small>Atendimento no horário de funcionamento</small>
-      </span>
-      <svg class="link__go" aria-hidden="true"><use href="#i-chevron"></use></svg>
-    </a>
+    </div>
 
-  </nav>
+    <div style="width:100%; margin-top:42px; display:flex; flex-direction:column; gap:4px;">
+      <div style="height:1px; background:rgba(244,241,234,0.45);"></div>
+      <div style="height:3px; background:#f4f1ea;"></div>
+    </div>
 
-  <footer class="foot">
-    <p class="foot__info">
-      <!-- TROCAR: endereco completo -->
-      Rua Exemplo, 000 · Itaquaquecetuba, SP
-    </p>
-    <ul class="social" aria-label="Redes sociais">
-      <li><a href="#" target="_blank" rel="noopener" aria-label="Instagram"><svg aria-hidden="true"><use href="#i-instagram"></use></svg></a></li>
-      <li><a href="#" target="_blank" rel="noopener" aria-label="Facebook"><svg aria-hidden="true"><use href="#i-facebook"></use></svg></a></li>
-      <li><a href="#" target="_blank" rel="noopener" aria-label="WhatsApp"><svg aria-hidden="true"><use href="#i-whatsapp"></use></svg></a></li>
-    </ul>
-    <p class="foot__copy">© <span id="ano">2026</span> Churrascaria Rancho Itaquá</p>
-  </footer>
+    <div style="width:100%; margin-top:30px; display:flex; flex-direction:column; gap:26px;">
 
-</main>
+      <div style="display:flex; flex-direction:column; gap:10px;">
+        <div style="font-size:11px; font-weight:600; letter-spacing:0.22em; color:#e9c46a; padding-left:0.22em;">HORÁRIO</div>
+        <div style="display:flex; justify-content:space-between; gap:16px; font-size:14px; font-weight:500; color:rgba(244,241,234,0.92);">
+          <span>Terça a sexta</span><span style="font-weight:700;">11h — 15h30</span>
+        </div>
+        <div style="display:flex; justify-content:space-between; gap:16px; font-size:14px; font-weight:500; color:rgba(244,241,234,0.92);">
+          <span>Sábado, domingo e feriado</span><span style="font-weight:700; white-space:nowrap;">11h — 16h30</span>
+        </div>
+      </div>
 
-<script src="script.js"></script>
-</body>
-</html>
+      <div style="display:flex; flex-direction:column; gap:10px;">
+        <div style="font-size:11px; font-weight:600; letter-spacing:0.22em; color:#e9c46a; padding-left:0.22em;">ONDE ESTAMOS</div>
+        <a href="{{ mapsUrl }}" target="_blank" rel="noopener" style="font-size:14px; font-weight:500; line-height:1.55; color:rgba(244,241,234,0.92); text-wrap:pretty;" style-hover="color:#e9c46a;">{{ endereco }}</a>
+        <div style="font-size:11px; font-weight:600; letter-spacing:0.16em; color:#e9c46a;">VER NO MAPA →</div>
+      </div>
+
+      <div style="display:flex; flex-direction:column; gap:10px;">
+        <div style="font-size:11px; font-weight:600; letter-spacing:0.22em; color:#e9c46a; padding-left:0.22em;">CONTATO</div>
+        <a href="{{ telUrl }}" style="font-size:18px; font-weight:700; letter-spacing:0.04em; color:#f4f1ea;" style-hover="color:#e9c46a;">{{ telefone }}</a>
+      </div>
+
+    </div>
+
+    <div style="margin-top:44px; display:flex; align-items:center; gap:12px; opacity:0.55;">
+      <span style="width:34px; height:1px; background:#e9c46a;"></span>
+      <span style="width:6px; height:6px; background:#e9c46a; transform:rotate(45deg);"></span>
+      <span style="width:34px; height:1px; background:#e9c46a;"></span>
+    </div>
+    <div style="margin-top:14px; font-size:10px; font-weight:600; letter-spacing:0.26em; color:rgba(244,241,234,0.45); text-align:center; padding-left:0.26em;">CHURRASCARIA RANCHO ITAQUÁ · ITAQUAQUECETUBA — SP</div>
+
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script="" data-props="{&quot;$preview&quot;:{&quot;width&quot;:440,&quot;height&quot;:1240},&quot;handle&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;@ranchoitaquachurrascaria&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;sobre&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Churrascaria por kilo e self service, com carnes na brasa, buffet variado e comida caseira feita todo dia. Um lugar de família para almoçar bem, no salão ou para levar.&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;endereco&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Rodovia Alberto Hinoto, 6180, Jardim Mossapyra - Itaquaquecetuba-Sp.&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;telefone&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;(11) 91849-6640&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+class Component extends DCLogic {
+  componentDidMount() {
+    this._t = setInterval(() => this.forceUpdate(), 60000);
+  }
+  componentWillUnmount() { clearInterval(this._t); }
+  aberto() {
+    const now = new Date();
+    const d = now.getDay();
+    const min = now.getHours() * 60 + now.getMinutes();
+    if (d >= 2 && d <= 5) return min >= 660 && min <= 930;
+    if (d === 0 || d === 6) return min >= 660 && min <= 990;
+    return false;
+  }
+  renderVals() {
+    const aberto = this.aberto();
+    const tel = (this.props.telefone ?? "(11) 91849-6640");
+    const end = this.props.endereco ?? "Rodovia Alberto Hinoto, 6180, Jardim Mossapyra - Itaquaquecetuba-Sp.";
+    const base = {
+      statusTexto: aberto ? "ABERTO AGORA" : "FECHADO AGORA",
+      statusCor: aberto ? "#8fcf6a" : "rgba(244,241,234,0.6)",
+      statusBorda: aberto ? "rgba(143,207,106,0.45)" : "rgba(244,241,234,0.28)",
+      mapsUrl: "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(end),
+      telUrl: "tel:+55" + tel.replace(/\D/g, "")
+    };
+    return Object.assign(base, this.vals());
+  }
+  vals() {
+    return {
+      handle: this.props.handle ?? "@ranchoitaquachurrascaria",
+      sobre: this.props.sobre ?? "Churrascaria por kilo e self service, com carnes na brasa, buffet variado e comida caseira feita todo dia. Um lugar de família para almoçar bem, no salão ou para levar.",
+      endereco: this.props.endereco ?? "Rodovia Alberto Hinoto, 6180, Jardim Mossapyra - Itaquaquecetuba-Sp.",
+      telefone: this.props.telefone ?? "(11) 91849-6640"
+    };
+  }
+}
+</script>
+
+
+</body></html>
