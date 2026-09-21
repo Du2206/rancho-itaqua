@@ -1,6 +1,6 @@
 # Churrascaria Rancho Itaquá
 
-No ar em <https://du2206.github.io/rancho-itaqua/>
+No ar em <https://ranchoitaqua.com.br>
 
 Página de links do restaurante. Site estático, sem build: é só abrir o `index.html`.
 
@@ -27,4 +27,4 @@ Tudo fica no `index.html`:
 
 Já está no GitHub Pages, servindo a branch `main` a partir da raiz. Todo `git push` na `main` republica o site sozinho, em cerca de um minuto.
 
-Para usar domínio próprio, crie um arquivo `CNAME` na raiz com o domínio dentro e aponte o DNS para o GitHub.
+O domínio `ranchoitaqua.com.br` está no registro.br, com DNS do próprio registro.br: quatro registros A apontando para o GitHub Pages (185.199.108.153 a 185.199.111.153) e `www` como CNAME para `du2206.github.io`. O arquivo `CNAME` na raiz diz ao GitHub qual domínio servir, então não apague.
